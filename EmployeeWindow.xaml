@@ -1,0 +1,14 @@
+﻿<Window x:Class="Database.EmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Database"
+        mc:Ignorable="d"
+        Title="EmployeeWindow" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="EmployeeDataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="0"/>
+        <Button Content="Назад" HorizontalAlignment="Left" Margin="10,217,0,0" VerticalAlignment="Top" Height="56" Width="152" Click="Button_Click"/>
+        <Button x:Name="Button1" Content="Удалить" HorizontalAlignment="Center" Margin="0,375,0,0" VerticalAlignment="Top" Height="49" Width="456" Background="#FF981AD4" Click="Button1_Click" />
+    </Grid>
+</Window>
