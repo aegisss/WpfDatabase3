@@ -25,18 +25,10 @@ namespace Database
             InitializeComponent();
             RangDataGrid.ItemsSource = adapter.GetData();
         }
-//Добавление данных в таблицу
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
-            try { 
-            object Rang_code = (RangDataGrid.SelectedItem as DataRowView).Row[0];
-            adapter.DeleteRangQuery(Convert.ToInt32(Rang_code));
+            adapter.UpdateRangQuery(NameTbx.Text, NameTbx1.Text, NameTbx2.Text, (int)(RangDataGrid.SelectedItem as DataRowView).Row[0]);
             RangDataGrid.ItemsSource = adapter.GetData();
-            }
-            catch
-            {
-                MessageBox.Show("Невозможно удалить данные");
-            }
         }
 //Переход в другое окно
         private void GoToNext_Click(object sender, RoutedEventArgs e)
@@ -44,6 +36,24 @@ namespace Database
             EmployeeWindow window = new EmployeeWindow();
             window.Show();
             this.Close();
+        }
+
+        private void RangDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                NameTbx.Text = (RangDataGrid.SelectedItem as DataRowView).Row[1].ToString();
+                NameTbx1.Text = (RangDataGrid.SelectedItem as DataRowView).Row[2].ToString();
+                NameTbx2.Text = (RangDataGrid.SelectedItem as DataRowView).Row[3].ToString();
+
+            }
+            catch
+            {
+                NameTbx.Text = null;
+                NameTbx1.Text = null;
+                NameTbx2.Text = null;
+
+            }
         }
     }
 }

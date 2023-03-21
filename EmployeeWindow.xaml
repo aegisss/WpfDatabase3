@@ -7,8 +7,14 @@
         mc:Ignorable="d"
         Title="EmployeeWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="EmployeeDataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="0"/>
+        <DataGrid x:Name="EmployeeDataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="0" SelectionChanged="EmployeeDataGrid_SelectionChanged"/>
         <Button Content="Назад" HorizontalAlignment="Left" Margin="10,217,0,0" VerticalAlignment="Top" Height="56" Width="152" Click="Button_Click"/>
-        <Button x:Name="Button1" Content="Удалить" HorizontalAlignment="Center" Margin="0,375,0,0" VerticalAlignment="Top" Height="49" Width="456" Background="#FF981AD4" Click="Button1_Click" />
+        <Button x:Name="Button1" Content="Изменение" HorizontalAlignment="Center" Margin="0,375,0,0" VerticalAlignment="Top" Height="49" Width="456" Background="#FF981AD4" Click="Button1_Click" />
+        <TextBox x:Name="NameText" HorizontalAlignment="Left" Margin="10,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" Height="34" RenderTransformOrigin="0.501,0.465" Text="Name"/>
+        <TextBox x:Name="NameText1" HorizontalAlignment="Left" Margin="233,305,0,0" TextWrapping="Wrap" Text="Surname" VerticalAlignment="Top" Width="147" Height="34" />
+        <TextBox x:Name="NameText2" HorizontalAlignment="Left" Margin="427,305,0,0" TextWrapping="Wrap" Text="Patronymic" VerticalAlignment="Top" Width="160" Height="34" />
+        <TextBox x:Name="NameText3" HorizontalAlignment="Left" Margin="630,305,0,0" TextWrapping="Wrap" Text="Age" VerticalAlignment="Top" Width="160" Height="34"/>
+        <ComboBox x:Name="FKRef" HorizontalAlignment="Left" Margin="427,234,0,0" VerticalAlignment="Top" Width="160" Height="39" SelectionChanged="FKRef_SelectionChanged"/>
+        <ComboBox x:Name="FKRef1" HorizontalAlignment="Left" Margin="630,234,0,0" VerticalAlignment="Top" Width="160" Height="39" SelectionChanged="FKRef1_SelectionChanged"/>
     </Grid>
 </Window>

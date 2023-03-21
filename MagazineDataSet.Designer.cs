@@ -1915,8 +1915,16 @@ SELECT Employee_code, Employee_Name, Surname, Patronymic, Age, Rang, Post FROM E
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "DELETE FROM [dbo].[Employee] WHERE ([Employee_code] = @Original_Employee_code)";
+            this._commandCollection[1].CommandText = "UPDATE Employee\r\nSET          Employee_Name = @Employee_Name, Surname = @Surname," +
+                " Patronymic = @Patronymic, Age = @Age, Rang = @Rang, Post = @Post\r\nWHERE  (Emplo" +
+                "yee_code = @Original_Employee_code); \r\n";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Employee_Name", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Employee_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Surname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Surname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Patronymic", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Patronymic", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Age", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Age", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rang", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Rang", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Post", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Post", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Employee_code", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Employee_code", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -2154,10 +2162,36 @@ SELECT Employee_code, Employee_Name, Surname, Patronymic, Age, Rang, Post FROM E
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
-        public virtual int DeleteEmployeeQuery(int Original_Employee_code) {
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateEmployeeQuery(string Employee_Name, string Surname, string Patronymic, string Age, int Rang, int Post, int Original_Employee_code) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
-            command.Parameters[0].Value = ((int)(Original_Employee_code));
+            if ((Employee_Name == null)) {
+                throw new global::System.ArgumentNullException("Employee_Name");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(Employee_Name));
+            }
+            if ((Surname == null)) {
+                throw new global::System.ArgumentNullException("Surname");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(Surname));
+            }
+            if ((Patronymic == null)) {
+                throw new global::System.ArgumentNullException("Patronymic");
+            }
+            else {
+                command.Parameters[2].Value = ((string)(Patronymic));
+            }
+            if ((Age == null)) {
+                throw new global::System.ArgumentNullException("Age");
+            }
+            else {
+                command.Parameters[3].Value = ((string)(Age));
+            }
+            command.Parameters[4].Value = ((int)(Rang));
+            command.Parameters[5].Value = ((int)(Post));
+            command.Parameters[6].Value = ((int)(Original_Employee_code));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2759,8 +2793,12 @@ SELECT Rang_code, Title, Duties, Requirements FROM Rang WHERE (Rang_code = @Rang
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "DELETE FROM [dbo].[Rang] WHERE ([Rang_code] = @Original_Rang_code)";
+            this._commandCollection[1].CommandText = "UPDATE [dbo].[Rang] SET [Title] = @Title, [Duties] = @Duties, [Requirements] = @R" +
+                "equirements WHERE ([Rang_code] = @Original_Rang_code)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Title", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Duties", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Duties", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Requirements", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Requirements", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rang_code", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Rang_code", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -2966,10 +3004,28 @@ SELECT Rang_code, Title, Duties, Requirements FROM Rang WHERE (Rang_code = @Rang
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
-        public virtual int DeleteRangQuery(int Original_Rang_code) {
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateRangQuery(string Title, string Duties, string Requirements, int Original_Rang_code) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
-            command.Parameters[0].Value = ((int)(Original_Rang_code));
+            if ((Title == null)) {
+                throw new global::System.ArgumentNullException("Title");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(Title));
+            }
+            if ((Duties == null)) {
+                throw new global::System.ArgumentNullException("Duties");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(Duties));
+            }
+            if ((Requirements == null)) {
+                throw new global::System.ArgumentNullException("Requirements");
+            }
+            else {
+                command.Parameters[2].Value = ((string)(Requirements));
+            }
+            command.Parameters[3].Value = ((int)(Original_Rang_code));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

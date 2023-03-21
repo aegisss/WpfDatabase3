@@ -70,6 +70,9 @@
     <Compile Include="EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MagazineDataSet.cs">
+      <DependentUpon>MagazineDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MagazineDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
